@@ -11,7 +11,9 @@
  */
 
 function sayHello() {
-
+let helloText = document.getElementById("canvas1").getContext('2d');
+helloText.font = "48px sans-serif";
+helloText.fillText("Hello, world!", 10, 50);
 }
 
 /*
@@ -38,7 +40,37 @@ function sayHello() {
  */
 
 function drawRectangle() {
+while (true) {
+height = prompt("Please enter a height for the rectangle.");
+  if (height >= 1) {
+    break;
+  }
+}
 
+while (true) {
+width = prompt("Please enter a width for the rectangle.");
+  if (width >= 1) {
+    break;
+  }
+}
+
+while (true) {
+xCoor = prompt("Please enter the x coordinate for the top left point of the rectangle.");
+  if (xCoor >= 5) {
+    break;
+  }
+}
+
+while (true) {
+yCoor = prompt("Please enter the y coordinate for the top left points of the rectangle.");
+  if (yCoor >= 5) {
+    break;
+  }
+}
+
+let canvas = document.getElementById("canvas2")
+let ctx = canvas.getContext('2d');
+ctx.fillRect(xCoor, yCoor, height, width);
 }
 
 /*
@@ -67,7 +99,33 @@ function drawRectangle() {
  */
 
 function drawColoredRectangle() {
-
+const canvas = document.getElementById("canvas3;");
+let ctx = canvas.getContext('2d');
+let color = prompt("What color would you like for the rectangle?")
+  switch(color) {
+    case "black":
+      rectFormat.fillStyle = "black";
+      break;
+    case "blue":
+      rectFormat.fillStyle = "blue";
+      break;
+    case "green":
+      rectFormat.fillStyle = "green";
+      break;
+    case "orange":
+      rectFormat.fillStyle = "orange";
+      break;
+    case "purple":
+      rectFormat.fillStyle = "purple";
+      break;
+    case "red":
+      rectFormat.fillStyle = "red";
+      break;
+    case "yellow":
+      rectFormat.fillStyle = "yellow";
+      break;
+  }
+  ctx.fillRect(10, 10, 100, 50);
 }
 
 /*
