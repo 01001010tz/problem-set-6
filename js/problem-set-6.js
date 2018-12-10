@@ -42,28 +42,28 @@ helloText.fillText("Hello, world!", 10, 50);
 function drawRectangle() {
 while (true) {
 height = prompt("Please enter a height for the rectangle.");
-  if (height >= 1) {
+  if (height >= 1 && height < 512) {
     break;
   }
 }
 
 while (true) {
 width = prompt("Please enter a width for the rectangle.");
-  if (width >= 1) {
+  if (width >= 1 && height < 1024) {
     break;
   }
 }
 
 while (true) {
 xCoor = prompt("Please enter the x coordinate for the top left point of the rectangle.");
-  if (xCoor >= 5) {
+  if (xCoor >= 5 && (xCoor + width < 1024)) {
     break;
   }
 }
 
 while (true) {
 yCoor = prompt("Please enter the y coordinate for the top left points of the rectangle.");
-  if (yCoor >= 5) {
+  if (yCoor >= 5 && (yCoor + height < 512)) {
     break;
   }
 }
@@ -100,7 +100,7 @@ ctx.fillRect(xCoor, yCoor, height, width);
 
 function drawColoredRectangle() {
 const canvas = document.getElementById("canvas3;");
-let ctx = canvas.getContext('2d');
+let rectFormat = canvas.getContext('2d');
 let color = prompt("What color would you like for the rectangle?")
   switch(color) {
     case "black":
@@ -125,7 +125,7 @@ let color = prompt("What color would you like for the rectangle?")
       rectFormat.fillStyle = "yellow";
       break;
   }
-  ctx.fillRect(10, 10, 100, 50);
+  rectFormat.fillRect(10, 10, 100, 50);
 }
 
 /*
@@ -158,7 +158,23 @@ let color = prompt("What color would you like for the rectangle?")
  */
 
 function drawTriangle() {
+let canvas = document.getElementById("canvas4")
+let ctx = canvas.getContext('2d');
 
+while (true) {
+ let side1 = Number(prompt("Enter the dimension for side 1. It should be the shortest."));
+ let side2 = Number(prompt("Enter the dimension for side 2. It should be longer than side 1."));
+ let side3 = Number(prompt("Enter the dimension for side 3. It should be longer than both of the previous sides."));
+ if (side3**2 == (side1**2) + (side2**2) || side1 > side2 || side1 >= 502 || side2 >= 1014) {
+  break;
+     }
+}
+ 
+  ctx.moveTo(10, 10);
+  ctx.lineTo(10, (10 + side1));
+  ctx.lineTo((10 + side2), (10 + side1);
+  ctx.lineTo(10, 10);
+  ctx.stroke();
 }
 
 /*
@@ -181,6 +197,8 @@ function drawTriangle() {
  */
 
 function drawSmileyFace() {
+let canvas = document.getElementById("canvas5")
+let ctx = canvas.getContext('2d');
 
 }
 
@@ -203,6 +221,8 @@ function drawSmileyFace() {
  */
 
 function drawStar() {
+let canvas = document.getElementById("canvas6")
+let ctx = canvas.getContext('2d');
 
 }
 
@@ -222,6 +242,8 @@ function drawStar() {
  */
 
 function drawStopSign() {
+let canvas = document.getElementById("canvas7")
+let ctx = canvas.getContext('2d');
 
 }
 
@@ -244,6 +266,8 @@ function drawStopSign() {
  */
 
 function drawPyramid() {
+let canvas = document.getElementById("canvas8")
+let ctx = canvas.getContext('2d');
 
 }
 
@@ -277,5 +301,7 @@ function drawPyramid() {
  */
 
 function drawHouse() {
+let canvas = document.getElementById("canvas9")
+let ctx = canvas.getContext('2d');
 
 }
