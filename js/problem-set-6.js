@@ -13,7 +13,7 @@
 function sayHello() {
 let helloText = document.getElementById("canvas1").getContext('2d');
 helloText.font = "48px sans-serif";
-helloText.fillText("Hello, world!", 10, 50);
+helloText.strokeText("Hello, World!", 10, 50);
 }
 
 /*
@@ -39,39 +39,40 @@ helloText.fillText("Hello, world!", 10, 50);
  *       it impossible to draw the rectangle within the bounds of the canvas
  */
 
-function drawRectangle() {
-while (true) {
-let height = prompt("Please enter a height for the rectangle.");
-  if (height >= 1) {
-    break;
-  }
-}
+ function drawRectangle() {
+ while (true) {
+ let height = prompt("Please enter a height for the rectangle.");
+   if (height >= 1 && height < 512) {
+     break;
+   }
+ }
 
-while (true) {
-let width = prompt("Please enter a width for the rectangle.");
-  if (width >= 1) {
-    break;
-  }
-}
+ while (true) {
+ let width = prompt("Please enter a width for the rectangle.");
+   if (width >= 1 && width < 1024) {
+     break;
+   }
+ }
 
-while (true) {
-let xCoor = prompt("Please enter the x coordinate for the top left point of the rectangle.");
-  if (xCoor >= 5) {
-    break;
-  }
-}
+ while (true) {
+ let xCoor = prompt("Please enter the x coordinate for the top left point of the rectangle.");
+   if (xCoor >= 5 && (xCoor + width < 1024)) {
+     break;
+   }
+ }
 
-while (true) {
-let yCoor = prompt("Please enter the y coordinate for the top left points of the rectangle.");
-  if (yCoor >= 5) {
-    break;
-  }
-}
+ while (true) {
+ let yCoor = prompt("Please enter the y coordinate for the top left points of the rectangle.");
+   if (yCoor >= 5 && (yCoor + height < 512)) {
+     break;
+   }
+ }
 
-let canvas = document.getElementById("canvas2")
-let ctx = canvas.getContext('2d');
-ctx.fillRect(xCoor, yCoor, height, width);
-}
+ let canvas = document.getElementById("canvas2")
+ let ctx = canvas.getContext('2d');
+ ctx.strokeRect(xCoor, yCoor, height, width);
+ }
+
 
 /*
  * Color. 3 points.
@@ -99,8 +100,8 @@ ctx.fillRect(xCoor, yCoor, height, width);
  */
 
 function drawColoredRectangle() {
-const canvas = document.getElementById("canvas3;");
-let ctx = canvas.getContext('2d');
+let canvas = document.getElementById("canvas3;");
+let rectFormat = canvas.getContext('2d');
 let color = prompt("What color would you like for the rectangle?")
   switch(color) {
     case "black":
@@ -125,7 +126,7 @@ let color = prompt("What color would you like for the rectangle?")
       rectFormat.fillStyle = "yellow";
       break;
   }
-  ctx.fillRect(10, 10, 100, 50);
+  rectFormat.fillRect(10, 10, 100, 50);
 }
 
 /*
@@ -156,22 +157,26 @@ let color = prompt("What color would you like for the rectangle?")
  *     - Combinations of side lengths that would make it impossible to draw
  *       the triangle within the bounds of the canvas
  */
+ function drawTriangle() {
+ let canvas = document.getElementById("canvas4");
+ let ctx = canvas.getContext('2d');
 
-function drawTriangle() {
-while (true) {
-  let side1Length = prompt("Enter the length of side 1.");
-}
+ while (true) {
+  let side1 = Number(prompt("Enter the dimension for side 1. It should be the shortest."));
+  let side2 = Number(prompt("Enter the dimension for side 2. It should be longer than side 1."));
+  let side3 = Number(prompt("Enter the dimension for side 3. It should be longer than both of the previous sides."));
+  if (side3**2 == (side1**2) + (side2**2) || side1 > side2 || side1 >= 502 || side2 >= 1014) {
+   break;
+      }
+ }
 
-while (true) {
-  let side2Length = prompt("Enter the length of side 2.");
-}
+   ctx.moveTo(10, 10);
+   ctx.lineTo(10, (10 + side1));
+   ctx.lineTo((10 + side2), (10 + side1));
+   ctx.lineTo(10, 10);
+   ctx.stroke();
+ }
 
-while (true) {
-  let side3Length = prompt("Enter the length of side 3.")
-}
-
-
-}
 
 /*
  * Smile. 7 points.
@@ -193,6 +198,36 @@ while (true) {
  */
 
 function drawSmileyFace() {
+  let canvas = document.getElementById("canvas5");
+  let ctx = canvas.getContext('2d');
+
+  while (true) {
+    let radius = Number(prompt("Please enter the face's radius"));
+    if (radius >= 50 && radius < 256) {
+      break;
+    }
+  }
+let eyeRadius = radius/10
+ctx.beginPath();
+ctx.arc(512, 256, radius, 0, 2*Math.PI);
+ctx.stroke();
+ctx.closePath();
+
+ctz.beinPath();
+ctx.arc(522,246, eyeRadius, 0, 2*Math.PI);
+ctx.stroke();
+ctx.closePath();
+
+ctx.beginPath();
+ctx.arc(502, 246, eyeRadius, 0, 2*Math.PI);
+ctx.stroke();
+ctx.closePath();
+
+let mouthRadius= radius * 0.7;
+ctx.beginPath();
+ctx.arc(512, 266, mouthRadius, 0, Math.PI);
+ctx.stroke();
+ctx.closePath();
 
 }
 
@@ -215,7 +250,8 @@ function drawSmileyFace() {
  */
 
 function drawStar() {
-
+  let canvas = document.getElementById("canvas6");
+  let ctx = canvas.getContext('2d');
 }
 
 /*
@@ -234,7 +270,18 @@ function drawStar() {
  */
 
 function drawStopSign() {
-
+  let canvas = document.getElementById("canvas7");
+  let ctx = canvas.getContext('2d');
+  let diagonal = Math.sqrt(3200);
+  ctx.beginPath();
+  ctx.moveTo(10, 50);
+  ctx.lineTo(10, 130);
+  ////DOUBLE CHECK THESE POINTS WHY AM I DOING THIS BY HAND
+  ctx.lineTo((10 + diagonal), (130 + diagonal))
+  ctx.lineTo((90 diagonal), (130 + diagonal));
+  ctx.lineTo((90 + 2*diagonal), 130);
+  ctx.lineTo((90 + 2*diagonal), 50)
+  ////DOUBLE CHECK THESE POIMTS WHY AM I DOING THIS BY HAND
 }
 
 /*
@@ -256,7 +303,8 @@ function drawStopSign() {
  */
 
 function drawPyramid() {
-
+  let canvas = document.getElementById("canvas8");
+  let ctx = canvas.getContext('2d');
 }
 
 /*
@@ -289,5 +337,6 @@ function drawPyramid() {
  */
 
 function drawHouse() {
-
+  let canvas = document.getElementById("canvas9");
+  let ctx = canvas.getContext('2d');
 }
