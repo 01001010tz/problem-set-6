@@ -273,15 +273,29 @@ function drawStopSign() {
   let canvas = document.getElementById("canvas7");
   let ctx = canvas.getContext('2d');
   let diagonal = Math.sqrt(3200);
+  let xCoor;
+  let yCoor;
+ //Assign values to these coordinates
+ 
   ctx.beginPath();
-  ctx.moveTo(10, 50);
-  ctx.lineTo(10, 130);
-  ////DOUBLE CHECK THESE POINTS WHY AM I DOING THIS BY HAND
-  ctx.lineTo((10 + diagonal), (130 + diagonal))
-  ctx.lineTo((90 diagonal), (130 + diagonal));
-  ctx.lineTo((90 + 2*diagonal), 130);
-  ctx.lineTo((90 + 2*diagonal), 50)
-  ////DOUBLE CHECK THESE POIMTS WHY AM I DOING THIS BY HAND
+  ctx.moveTo();
+  ctx.lineTo((xCoor - diagonal), (yCoor + diagonal));
+  ctx.lineTo((xCoor - diagonal), (yCoor + diagonal + 80));
+  ctx.lineTo(xCoor, yCoor + 80 + 2*diagonal);
+  ctx.lineTo((xCoor + 80), (yCoor + 80 + 2*diagonal));
+  ctx.lineTo((xCoor + diagonal + 80), (yCoor + 80 + diagonal));
+  ctx.lineTo((xCoor + diagonal + 80), (yCoor + diagonal));
+  ctx.lineTo((xCoor + 80), yCoor);
+  ctx.lineTo(xCoor, yCoor);
+  ctx.stroke();
+  ctx.fillStyle("red");
+  ctx.fill();
+  ctx.closePath();
+ 
+  ctx.beginPath();
+  ctx.moveTo(xCoor, yCoor);
+  ctx.strokeText("STOP", xCoor, yCoor);
+  ctx.closePath();
 }
 
 /*
