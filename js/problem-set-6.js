@@ -16,6 +16,7 @@ helloText.font = "48px sans-serif";
 helloText.strokeText("Hello, World!", 10, 50);
 }
 
+
 /*
  * Rectangle. 3 points.
  *
@@ -331,8 +332,76 @@ function drawStopSign() {
 function drawPyramid() {
   let canvas = document.getElementById("canvas8");
   let ctx = canvas.getContext('2d');
+  let dimension;
+  let i = 0;
+ 
+ while (true) {
+  dimension = Number(prompt("Please input a dimension for the squares of the pyramid."));
+  if (dimension > 2 && dimension < 100) { 
+   break; 
+  } else {
+    alert("That doesn't seem to be correct! Please enter a valid input.");
+   }
+ }
+ 
+  let xCoor = 10;
+  let yCoor = 502 - dimension;
+ 
+ ctx.beginPath();
+ for (i = 0; i <= 4; i++) {
+  ctx.moveTo(xCoor, yCoor);
+  ctx.strokeRectangle(xCoor, yCoor, dimension, dimension);
+  xCoor += dimension;
+ }
+ 
+ xCoor = 10 + (dimension*.5);
+ yCoor -= dimension;
+ 
+ for (i = 0; i <= 3; i++) {
+  ctx.moveTo(xCoor, yCoor);
+  ctx.strokeRectangle(xCoor, yCoor, dimension, dimension);
+  xCoor += dimension;
+ }
+ 
+ xCoor = 10 + dimension;
+ yCoor -= dimension;
+ 
+ for (i = 0; i <= 2; i++) {
+  ctx.moveTo(xCoor, yCoor);
+  ctx.strokeRectangle(xCoor, yCoor, dimension, dimension);
+  xCoor += dimension;
+ }
+ 
+ xCoor = 10 + (dimension*1.5)
+ yCoor -= dimension;
+ 
+ for (i = 0; i <= 1; i++) {
+  ctx.moveTo(xCoor, yCoor);
+  ctx.strokeRectangle(xCoor, yCoor, dimension, dimension);
+  xCoor += dimension;
+ }
+ 
+ xCoor = 10 + (dimension*2);
+ yCoor -= dimension;
+ 
+ ctx.moveTo(xCoor, yCoor);
+ ctx.strokeRectangle(xCoor, yCoor, dimension, dimension);
+ 
+/* Tried to translate this horrid, repetitive monster of an algorithm into just one loop. Here goes nothing:
+ for (j = 0; j<= 4; j++) {
+  let k = 4;
+  for (i = 0; i <= k; i++) {
+  ctx.moveTo(xCoor, yCoor);
+  ctx.strokeRectangle(xCoor, yCoor, dimension, dimension);
+  xCoor += dimension;
+  }
+  xCoor = 10 + (((5 - k)/2)*dimension); 
+  yCoor -= dimension;
+  k--;
+ }
 }
-
+Double check that this is correct though, because I have no faith in my own garbage code :) */
+ 
 /*
  * House. 7 points.
  *
@@ -366,3 +435,4 @@ function drawHouse() {
   let canvas = document.getElementById("canvas9");
   let ctx = canvas.getContext('2d');
 }
+
