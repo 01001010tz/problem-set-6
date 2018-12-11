@@ -44,6 +44,8 @@ helloText.strokeText("Hello, World!", 10, 50);
  let height = prompt("Please enter a height for the rectangle.");
    if (height >= 1 && height < 512) {
      break;
+   } else {
+    alert("That doesn't seem to be correct! Please enter a valid input.")
    }
  }
 
@@ -51,6 +53,8 @@ helloText.strokeText("Hello, World!", 10, 50);
  let width = prompt("Please enter a width for the rectangle.");
    if (width >= 1 && width < 1024) {
      break;
+   } else {
+    alert("That doesn't seem to be correct! Please enter a valid input.")
    }
  }
 
@@ -58,6 +62,8 @@ helloText.strokeText("Hello, World!", 10, 50);
  let xCoor = prompt("Please enter the x coordinate for the top left point of the rectangle.");
    if (xCoor >= 5 && (xCoor + width < 1024)) {
      break;
+   } else {
+    alert("That doesn't seem to be correct! Please enter a valid input.")
    }
  }
 
@@ -65,6 +71,8 @@ helloText.strokeText("Hello, World!", 10, 50);
  let yCoor = prompt("Please enter the y coordinate for the top left points of the rectangle.");
    if (yCoor >= 5 && (yCoor + height < 512)) {
      break;
+   } else {
+    alert("That doesn't seem to be correct! Please enter a valid input.")
    }
  }
 
@@ -167,7 +175,9 @@ let color = prompt("What color would you like for the rectangle?")
   let side3 = Number(prompt("Enter the dimension for side 3. It should be longer than both of the previous sides."));
   if (side3**2 == (side1**2) + (side2**2) || side1 > side2 || side1 >= 502 || side2 >= 1014) {
    break;
-      }
+      } else {
+    alert("That doesn't seem to be correct! Please enter a valid input.")
+   }
  }
 
    ctx.moveTo(10, 10);
@@ -205,7 +215,9 @@ function drawSmileyFace() {
     let radius = Number(prompt("Please enter the face's radius"));
     if (radius >= 50 && radius < 256) {
       break;
-    }
+    } else {
+    alert("That doesn't seem to be correct! Please enter a valid input.")
+   }
   }
 let eyeRadius = radius/10
 ctx.beginPath();
