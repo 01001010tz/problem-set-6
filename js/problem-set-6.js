@@ -174,7 +174,7 @@ let color = prompt("What color would you like for the rectangle?")
   let side1 = Number(prompt("Enter the dimension for side 1. It should be the shortest."));
   let side2 = Number(prompt("Enter the dimension for side 2. It should be longer than side 1."));
   let side3 = Number(prompt("Enter the dimension for side 3. It should be longer than both of the previous sides."));
-  if (side3**2 == (side1**2) + (side2**2) || side1 > side2 || side1 >= 502 || side2 >= 1014) {
+  if (side3**2 == (side1**2) + (side2**2) && side1 < side2 && side1 < 502 && side2 < 1014) {
    break;
       } else {
     alert("That doesn't seem to be correct! Please enter a valid input.")
@@ -387,7 +387,8 @@ function drawPyramid() {
  ctx.moveTo(xCoor, yCoor);
  ctx.strokeRectangle(xCoor, yCoor, dimension, dimension);
  
-/* Tried to translate this horrid, repetitive monster of an algorithm into just one loop. Here goes nothing:
+/* THIS BIT'S IMPORTANT LOOK HERE NOT AT THE AWFUL HUNK OF JUNK YOU SEE ABOVE 
+Tried to translate this horrid, repetitive monster of an algorithm into just one loop. Here goes nothing:
  for (j = 0; j<= 4; j++) {
   let k = 4;
   for (i = 0; i <= k; i++) {
