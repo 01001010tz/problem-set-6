@@ -114,25 +114,25 @@ let rectFormat = canvas.getContext('2d');
 let color = prompt("What color would you like for the rectangle?")
   switch(color) {
     case "black":
-      rectFormat.fillStyle = "black";
+      rectFormat.fillStyle = black;
       break;
     case "blue":
-      rectFormat.fillStyle = "blue";
+      rectFormat.fillStyle = blue;
       break;
     case "green":
-      rectFormat.fillStyle = "green";
+      rectFormat.fillStyle = green;
       break;
     case "orange":
-      rectFormat.fillStyle = "orange";
+      rectFormat.fillStyle = orange;
       break;
     case "purple":
-      rectFormat.fillStyle = "purple";
+      rectFormat.fillStyle = purple;
       break;
     case "red":
-      rectFormat.fillStyle = "red";
+      rectFormat.fillStyle = red;
       break;
     case "yellow":
-      rectFormat.fillStyle = "yellow";
+      rectFormat.fillStyle = yellow;
       break;
   }
   rectFormat.fillRect(10, 10, 100, 50);
@@ -285,7 +285,7 @@ function drawStar() {
 function drawStopSign() {
   let canvas = document.getElementById("canvas7");
   let ctx = canvas.getContext('2d');
-  let diagonal = Math.sqrt(3200);
+  let diagonal = Math.round(Math.sqrt(3200));
   let xCoor;
   let yCoor;
  //Assign values to these coordinates
@@ -300,12 +300,8 @@ function drawStopSign() {
   ctx.lineTo((xCoor + diagonal + 80), (yCoor + diagonal));
   ctx.lineTo((xCoor + 80), yCoor);
   ctx.lineTo(xCoor, yCoor);
-  ctx.stroke();
-  ctx.fillStyle("red");
+  ctx.fillStyle = red;
   ctx.fill();
-  ctx.closePath();
- 
-  ctx.beginPath();
   ctx.moveTo(xCoor, yCoor);
   ctx.strokeText("STOP", xCoor, yCoor);
   ctx.closePath();
@@ -347,7 +343,7 @@ function drawPyramid() {
   let xCoor = 10;
   let yCoor = 502 - dimension;
  
- ctx.beginPath();
+ /*ctx.beginPath();
  for (i = 0; i <= 4; i++) {
   ctx.moveTo(xCoor, yCoor);
   ctx.strokeRectangle(xCoor, yCoor, dimension, dimension);
@@ -386,9 +382,7 @@ function drawPyramid() {
  
  ctx.moveTo(xCoor, yCoor);
  ctx.strokeRectangle(xCoor, yCoor, dimension, dimension);
- 
-/* THIS BIT'S IMPORTANT LOOK HERE NOT AT THE AWFUL HUNK OF JUNK YOU SEE ABOVE 
-Tried to translate this horrid, repetitive monster of an algorithm into just one loop. Here goes nothing:
+ */
  for (j = 0; j<= 4; j++) {
   let k = 4;
   for (i = 0; i <= k; i++) {
@@ -396,12 +390,11 @@ Tried to translate this horrid, repetitive monster of an algorithm into just one
   ctx.strokeRectangle(xCoor, yCoor, dimension, dimension);
   xCoor += dimension;
   }
-  xCoor = 10 + (((5 - k)/2)*dimension); 
+  xCoor = 10 + (((4 - k)/2)*dimension); 
   yCoor -= dimension;
   k--;
  }
 }
-Double check that this is correct though, because I have no faith in my own garbage code :) */
  
 /*
  * House. 7 points.
@@ -435,5 +428,63 @@ Double check that this is correct though, because I have no faith in my own garb
 function drawHouse() {
   let canvas = document.getElementById("canvas9");
   let ctx = canvas.getContext('2d');
+ 
+ let doorColor;
+ let houseColor;
+ 
+ doorColor = prompt("Please give a color for the door of the house. Make sure the first letter is lowercase.");
+ houseColor = prompt("Please give a color for the walls of the house. Make sure the first letter is lowercase.");
+ 
+if ((houseColor == ("blue" || "brown" || "green" || "orange" || "purple" || "red" || "yellow")) && (doorColor == ("blue" || "brown" || "green" || "orange" || "purple" || "red" || "yellow")) {
+ ctx.beginPath();
+ ctx.moveTo(512, 310); 
+ ctx.lineTo(150, 310);
+ ctx.lineTo(512, 10);
+ ctx.lineTo(874, 310);
+ ctx.lineTo(512, 310);
+ ctx.fillStyle = gray;
+ ctx.fill();
+ ctx.closePath();
+ 
+ 
+ ctx.beginPath();
+ ctx.moveTo(200, 310);
+ ctx.fillStyle = houseColor;
+ ctx.fillRect(200, 310, 440, 624);
+ ctx.closePath();
+ 
+ 
+ ctx.beginPath();
+ ctx.fillStyle = #add8e6;
+ ctx.fillRect(300, 410, 20, 20);
+ ctx.closePath();
+ 
+ 
+ ctx.beginPath();
+ ctx.fillStyle = #add8e6;
+ ctx.fillRect(724, 410, 20, 20);
+ ctx.closePath();
+ 
+ 
+ ctx.beginPath();
+ ctx.fillStyle = #add8e6;
+ ctx.fillRect(300, 630, 20, 20);
+ ctx.closePath();
+ 
+ 
+ ctx.beginPath();
+ ctx.fillStyle = #add8e6;
+ ctx.fillRect(724, 630, 20, 20);
+ ctx.closePath();
+ 
+ ctx.beginPath();
+ ctx.fillStyle = doorColor;
+ ctx.fillRect(500, 630, 24, 120);
+ ctx.closePath();
+ 
+    } else {
+    alert("One or both of your colors hasn't been accepted. Please make sure it's a supported color, and that the first letter is lowercase.");
+    let loss = document.getElementById("output9");
+    loss.innerHTML = "|  ||" + "<br/>||  |_";
+    }
 }
-
