@@ -134,6 +134,9 @@ let color = prompt("What color would you like for the rectangle?")
     case "yellow":
       rectFormat.fillStyle = yellow;
       break;
+      default:
+      alert("That doesn't seem to be a supported color! Make sure it's supported and the first letter is lowercase.");
+      break;
   }
   rectFormat.fillRect(10, 10, 100, 50);
 }
@@ -289,7 +292,7 @@ function drawStopSign() {
   let xCoor;
   let yCoor;
  //Assign values to these coordinates
- 
+
   ctx.beginPath();
   ctx.moveTo();
   ctx.lineTo((xCoor - diagonal), (yCoor + diagonal));
@@ -330,56 +333,58 @@ function drawPyramid() {
   let ctx = canvas.getContext('2d');
   let dimension;
   let i = 0;
- 
+
  while (true) {
   dimension = Number(prompt("Please input a dimension for the squares of the pyramid."));
-  if (dimension > 2 && dimension < 100) { 
-   break; 
-  } else {
-    alert("That doesn't seem to be correct! Please enter a valid input.");
-   }
+  if (dimension > 2 && dimension < 100) {
+   break;
+ } else if (dimension <2){
+    alert("That dimension is too small. The pyramid won't be visible. Please use a larger value.");
+  } else if (dimension < 100) {
+    alert("That dimension is too large. The pyramid won't fit on the canvas. Please use a smaller value.");
+  }
  }
- 
+
   let xCoor = 10;
   let yCoor = 502 - dimension;
- 
+
  /*ctx.beginPath();
  for (i = 0; i <= 4; i++) {
   ctx.moveTo(xCoor, yCoor);
   ctx.strokeRectangle(xCoor, yCoor, dimension, dimension);
   xCoor += dimension;
  }
- 
+
  xCoor = 10 + (dimension*.5);
  yCoor -= dimension;
- 
+
  for (i = 0; i <= 3; i++) {
   ctx.moveTo(xCoor, yCoor);
   ctx.strokeRectangle(xCoor, yCoor, dimension, dimension);
   xCoor += dimension;
  }
- 
+
  xCoor = 10 + dimension;
  yCoor -= dimension;
- 
+
  for (i = 0; i <= 2; i++) {
   ctx.moveTo(xCoor, yCoor);
   ctx.strokeRectangle(xCoor, yCoor, dimension, dimension);
   xCoor += dimension;
  }
- 
+
  xCoor = 10 + (dimension*1.5)
  yCoor -= dimension;
- 
+
  for (i = 0; i <= 1; i++) {
   ctx.moveTo(xCoor, yCoor);
   ctx.strokeRectangle(xCoor, yCoor, dimension, dimension);
   xCoor += dimension;
  }
- 
+
  xCoor = 10 + (dimension*2);
  yCoor -= dimension;
- 
+
  ctx.moveTo(xCoor, yCoor);
  ctx.strokeRectangle(xCoor, yCoor, dimension, dimension);
  */
@@ -390,12 +395,12 @@ function drawPyramid() {
   ctx.strokeRectangle(xCoor, yCoor, dimension, dimension);
   xCoor += dimension;
   }
-  xCoor = 10 + (((4 - k)/2)*dimension); 
+  xCoor = 10 + (((4 - k)/2)*dimension);
   yCoor -= dimension;
   k--;
  }
 }
- 
+
 /*
  * House. 7 points.
  *
@@ -428,16 +433,16 @@ function drawPyramid() {
 function drawHouse() {
   let canvas = document.getElementById("canvas9");
   let ctx = canvas.getContext('2d');
- 
+
  let doorColor;
  let houseColor;
- 
+
  doorColor = prompt("Please give a color for the door of the house. Make sure the first letter is lowercase.");
  houseColor = prompt("Please give a color for the walls of the house. Make sure the first letter is lowercase.");
- 
+
 if ((houseColor == ("blue" || "brown" || "green" || "orange" || "purple" || "red" || "yellow")) && (doorColor == ("blue" || "brown" || "green" || "orange" || "purple" || "red" || "yellow")) {
  ctx.beginPath();
- ctx.moveTo(512, 310); 
+ ctx.moveTo(512, 310);
  ctx.lineTo(150, 310);
  ctx.lineTo(512, 10);
  ctx.lineTo(874, 310);
@@ -445,46 +450,46 @@ if ((houseColor == ("blue" || "brown" || "green" || "orange" || "purple" || "red
  ctx.fillStyle = gray;
  ctx.fill();
  ctx.closePath();
- 
- 
+
+
  ctx.beginPath();
  ctx.moveTo(200, 310);
  ctx.fillStyle = houseColor;
  ctx.fillRect(200, 310, 440, 624);
  ctx.closePath();
- 
- 
+
+
  ctx.beginPath();
  ctx.fillStyle = #add8e6;
  ctx.fillRect(300, 410, 20, 20);
  ctx.closePath();
- 
- 
+
+
  ctx.beginPath();
  ctx.fillStyle = #add8e6;
  ctx.fillRect(724, 410, 20, 20);
  ctx.closePath();
- 
- 
+
+
  ctx.beginPath();
  ctx.fillStyle = #add8e6;
  ctx.fillRect(300, 630, 20, 20);
  ctx.closePath();
- 
- 
+
+
  ctx.beginPath();
  ctx.fillStyle = #add8e6;
  ctx.fillRect(724, 630, 20, 20);
  ctx.closePath();
- 
+
  ctx.beginPath();
  ctx.fillStyle = doorColor;
  ctx.fillRect(500, 630, 24, 120);
  ctx.closePath();
- 
-    } else {
+
+  } else {
     alert("One or both of your colors hasn't been accepted. Please make sure it's a supported color, and that the first letter is lowercase.");
-    let loss = document.getElementById("output9");
-    loss.innerHTML = "|  ||" + "<br/>||  |_";
+    //let loss = document.getElementById("output9");
+    //loss.innerHTML = "|  ||" + "<br/>||  |_";
     }
 }
