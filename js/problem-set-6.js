@@ -268,6 +268,29 @@ ctx.closePath();
 function drawStar() {
   let canvas = document.getElementById("canvas6");
   let ctx = canvas.getContext('2d');
+ 
+ let innerRadius = Number(prompt("Please enter an inner radius for your circle"));
+ let outerRadius = Number(prompt("Please enter an outer radius for your circle"));
+ 
+ //Asks for and declares input variables
+ 
+ ctx.beginPath();
+ ctx.moveTo(128, (128 - outerRadius));
+ let rotation = 0;
+ //Begins at center of canvas
+ 
+ for (i = 0; i <= 5; i++) {
+  ctx.lineTo(128 + Math.round((Math.cos(rotation - (Math.PI/2))*outerRadius)), 128 + Math.round((Math.sin(rotation - (Math.PI/2))*outerRadius)));
+  rotation += Math.PI*0.2;
+  //Draws lines to outer radius points before offsetting rotation to prevent overlap
+  ctx.lineTo(128 + Math.round((Math.cos(rotation - (Math.PI/2))*innerRadius)), 128 + Math.round((Math.sin(rotation - (Math.PI/2))*innerRadius)));
+  rotation += Math.PI*0.2;
+  //Draws lines to inner radius points before offsetting rotation to prevent overlap
+ }
+ //Loops to create each arm
+ ctx.stroke();
+ ctx.closePath();
+ //Fills whole thing after loop
 }
 
 /*
