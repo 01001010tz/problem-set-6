@@ -48,8 +48,10 @@ helloText.strokeText("Hello, World!", 10, 50);
  let height = prompt("Please enter a height for the rectangle.");
    if (height >= 1 && height < 512) {
      break;
-   } else {
-    alert("That doesn't seem to be correct! Please enter a valid input.")
+   } else if (height < 1){
+    alert("That's too short! Please enter a valid input.");
+   } else if (height > 512) {
+     alert("That's too tall! Please enter a valid input.");
    }
  }
 
@@ -57,8 +59,10 @@ helloText.strokeText("Hello, World!", 10, 50);
  let width = prompt("Please enter a width for the rectangle.");
    if (width >= 1 && width < 1024) {
      break;
-   } else {
-    alert("That doesn't seem to be correct! Please enter a valid input.")
+   } else if (width < 1){
+    alert("That's too narrow! Please enter a valid input.");
+   } else if (width > 1024) {
+     alert("That's too wide! Please enter a valid input.")
    }
  }
 
@@ -67,7 +71,7 @@ helloText.strokeText("Hello, World!", 10, 50);
    if (xCoor >= 5 && (xCoor + width < 1024)) {
      break;
    } else {
-    alert("That doesn't seem to be correct! Please enter a valid input.")
+    alert("That won't fit on the canvas! Please enter a valid input.");
    }
  }
 
@@ -76,7 +80,7 @@ helloText.strokeText("Hello, World!", 10, 50);
    if (yCoor >= 5 && (yCoor + height < 512)) {
      break;
    } else {
-    alert("That doesn't seem to be correct! Please enter a valid input.")
+    alert("That won't fit on the canvas! Please enter a valid input.");
    }
  }
 
@@ -136,7 +140,7 @@ let color = prompt("What color would you like for the rectangle?")
     case "yellow":
       rectFormat.fillStyle = yellow;
       break;
-      default:
+    default:
       alert("That doesn't seem to be a supported color! Make sure it's supported and the first letter is lowercase.");
       break;
   }
@@ -182,8 +186,14 @@ let color = prompt("What color would you like for the rectangle?")
   let side3 = Number(prompt("Enter the dimension for side 3. It should be longer than both of the previous sides."));
   if (side3**2 == (side1**2) + (side2**2) && side1 < side2 && side1 < 502 && side2 < 1014) {
    break;
-      } else {
-    alert("That doesn't seem to be correct! Please enter a valid input.")
+      } else if (side 1 > side 2){
+    alert("Please list your sides in order from least to greatest.");
+   } else if (side3**2 != side1**2 + side2**2) {
+        alert("Those sides don't form a valid right triangle. Please enter a valid combination");
+   } else if (side1 > 502 || side2 > 1014) {
+        alert("One or more of those sides is too long. Please enter a valid input.");
+   } else if (side1 < 3 || side 2 < 4) {
+        alert("One or more of those sides is too short. Please enter a valid input.");
    }
  }
 
@@ -221,10 +231,12 @@ function drawSmileyFace() {
 
   while (true) {
     let radius = Number(prompt("Please enter the face's radius"));
-    if (radius >= 50 && radius < 256) {
+    if (radius >= 10 && radius < 256) {
       break;
-    } else {
-    alert("That doesn't seem to be correct! Please enter a valid input.")
+    } else if (radius < 10){
+    alert("That'll be too small to see! Please enter a valid input.");
+   } else if (radius > 256){
+    alert("That won't fit on the canvas. Please enter a valid input.");
    }
   }
 let eyeRadius = radius/10
@@ -233,19 +245,19 @@ ctx.arc(512, 256, radius, 0, 2*Math.PI);
 ctx.stroke();
 ctx.closePath();
 
-ctz.beinPath();
-ctx.arc(522,246, eyeRadius, 0, 2*Math.PI);
+ctx.beinPath();
+ctx.arc((512 - .1*radius), (256 - .1*radius), eyeRadius, 0, 2*Math.PI);
 ctx.stroke();
 ctx.closePath();
 
 ctx.beginPath();
-ctx.arc(502, 246, eyeRadius, 0, 2*Math.PI);
+ctx.arc((512 + .1*radius), (256 - .1*radius), eyeRadius, 0, 2*Math.PI);
 ctx.stroke();
 ctx.closePath();
 
 let mouthRadius= radius * 0.7;
 ctx.beginPath();
-ctx.arc(512, 266, mouthRadius, 0, Math.PI);
+ctx.arc(512, (256 + .2*radius), mouthRadius, 0, Math.PI);
 ctx.stroke();
 ctx.closePath();
 
@@ -277,6 +289,13 @@ function drawStar() {
  let innerRadius = Number(prompt("Please enter an inner radius for your circle"));
  let outerRadius = Number(prompt("Please enter an outer radius for your circle"));
  
+ if (innerRadius > 125 || outerRadius > 125) {
+  alert("One or both of your dimensions are too large.");
+ } else if (innerRadius > outerRadius) {
+  alert("The inner radius should not be greater than the outer.");
+ } else if (innerRadius < 10 || outerRadius < 10) {
+  alert("One or both of your dimensions are too small.");
+ }
  //Asks for and declares input variables
  
  ctx.beginPath();
@@ -285,10 +304,10 @@ function drawStar() {
  //Begins at center of canvas
  
  for (i = 0; i <= 5; i++) {
-  ctx.lineTo(128 + Math.round((Math.cos(rotation - (Math.PI/2))*outerRadius)), 128 + Math.round((Math.sin(rotation - (Math.PI/2))*outerRadius)));
+  ctx.lineTo(125 + Math.round((Math.cos(rotation - (Math.PI/2))*outerRadius)), 125 + Math.round((Math.sin(rotation - (Math.PI/2))*outerRadius)));
   rotation += Math.PI*0.2;
   //Draws lines to outer radius points before offsetting rotation to prevent overlap
-  ctx.lineTo(128 + Math.round((Math.cos(rotation - (Math.PI/2))*innerRadius)), 128 + Math.round((Math.sin(rotation - (Math.PI/2))*innerRadius)));
+  ctx.lineTo(125 + Math.round((Math.cos(rotation - (Math.PI/2))*innerRadius)), 125 + Math.round((Math.sin(rotation - (Math.PI/2))*innerRadius)));
   rotation += Math.PI*0.2;
   //Draws lines to inner radius points before offsetting rotation to prevent overlap
  }
@@ -368,7 +387,7 @@ function drawPyramid() {
   dimension = Number(prompt("Please input a dimension for the squares of the pyramid."));
   if (dimension > 2 && dimension < 100) {
    break;
- } else if (dimension <2){
+ } else if (dimension < 2){
     alert("That dimension is too small. The pyramid won't be visible. Please use a larger value.");
   } else if (dimension < 100) {
     alert("That dimension is too large. The pyramid won't fit on the canvas. Please use a smaller value.");
