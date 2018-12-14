@@ -44,8 +44,13 @@ helloText.strokeText("Hello, World!", 10, 50);
  let canvas = document.getElementById("canvas2")
  let ctx = canvas.getContext('2d');
  ctx.clearRect(0, 0, 1024, 128)
-  while (true) {
- let height = prompt("Please enter a height for the rectangle.");
+ let height;
+ let width;
+ let xCoor;
+ let yCoor;
+
+while (true) {
+ height = prompt("Please enter a height for the rectangle.");
    if (height >= 1 && height < 512) {
      break;
    } else if (height < 1){
@@ -56,31 +61,31 @@ helloText.strokeText("Hello, World!", 10, 50);
  }
 
  while (true) {
- let width = prompt("Please enter a width for the rectangle.");
+ width = prompt("Please enter a width for the rectangle.");
    if (width >= 1 && width < 1024) {
      break;
    } else if (width < 1){
     alert("That's too narrow! Please enter a valid input.");
    } else if (width > 1024) {
-     alert("That's too wide! Please enter a valid input.")
+     alert("That's too wide! Please enter a valid input.");
    }
  }
 
  while (true) {
- let xCoor = prompt("Please enter the x coordinate for the top left point of the rectangle.");
-   if (xCoor >= 5 && (xCoor + width < 1024)) {
+ xCoor = prompt("Please enter the x coordinate for the top left point of the rectangle.");
+   if (xCoor >= 5 && (xCoor + width <= 1024)) {
      break;
    } else {
-    alert("That won't fit on the canvas! Please enter a valid input.");
+    alert("That won't fit on the canvas-- it's too wide with that X! Please enter a valid input.");
    }
  }
 
  while (true) {
- let yCoor = prompt("Please enter the y coordinate for the top left points of the rectangle.");
-   if (yCoor >= 5 && (yCoor + height < 512)) {
+ yCoor = prompt("Please enter the y coordinate for the top left points of the rectangle.");
+   if (yCoor >= 5 && (yCoor + height <= 512)) {
      break;
    } else {
-    alert("That won't fit on the canvas! Please enter a valid input.");
+    alert("That won't fit on the canvas-- it's too tall with that Y! Please enter a valid input.");
    }
  }
 
@@ -114,37 +119,37 @@ helloText.strokeText("Hello, World!", 10, 50);
  */
 
 function drawColoredRectangle() {
-let canvas = document.getElementById("canvas3;");
-let rectFormat = canvas.getContext('2d');
-rectFormat.clearRect(0, 0, 1024, 128);
+let canvas = document.getElementById("canvas3");
+let ctx = canvas.getContext('2d');
+ctx.clearRect(0, 0, 1024, 128);
 let color = prompt("What color would you like for the rectangle?")
   switch(color) {
     case "black":
-      rectFormat.fillStyle = black;
+      ctx.fillStyle = "black";
       break;
     case "blue":
-      rectFormat.fillStyle = blue;
+      ctx.fillStyle = "blue";
       break;
     case "green":
-      rectFormat.fillStyle = green;
+      ctx.fillStyle = "green";
       break;
     case "orange":
-      rectFormat.fillStyle = orange;
+      ctx.fillStyle = "orange";
       break;
     case "purple":
-      rectFormat.fillStyle = purple;
+      ctx.fillStyle = "purple";
       break;
     case "red":
-      rectFormat.fillStyle = red;
+      ctx.fillStyle = "red";
       break;
     case "yellow":
-      rectFormat.fillStyle = yellow;
+      ctx.fillStyle = "yellow";
       break;
     default:
       alert("That doesn't seem to be a supported color! Make sure it's supported and the first letter is lowercase.");
       break;
   }
-  rectFormat.fillRect(10, 10, 100, 50);
+  ctx.fillRect(10, 10, 100, 50);
 }
 
 /*
@@ -178,21 +183,25 @@ let color = prompt("What color would you like for the rectangle?")
  function drawTriangle() {
  let canvas = document.getElementById("canvas4");
  let ctx = canvas.getContext('2d');
- ctx.clearRect(0, 0, 1024, 512);
+ ctx.clearRect(0, 0, (canvas.width), (canvas.width));
+
+ let side1;
+ let side2;
+ let side3;
 
  while (true) {
-  let side1 = Number(prompt("Enter the dimension for side 1. It should be the shortest."));
-  let side2 = Number(prompt("Enter the dimension for side 2. It should be longer than side 1."));
-  let side3 = Number(prompt("Enter the dimension for side 3. It should be longer than both of the previous sides."));
+  side1 = Number(prompt("Enter the dimension for side 1. It should be the shortest."));
+  side2 = Number(prompt("Enter the dimension for side 2. It should be longer than side 1."));
+  side3 = Number(prompt("Enter the dimension for side 3. It should be longer than both of the previous sides."));
   if (side3**2 == (side1**2) + (side2**2) && side1 < side2 && side1 < 502 && side2 < 1014) {
    break;
-      } else if (side 1 > side 2){
+      } else if (side1 > side2){
     alert("Please list your sides in order from least to greatest.");
    } else if (side3**2 != side1**2 + side2**2) {
         alert("Those sides don't form a valid right triangle. Please enter a valid combination");
    } else if (side1 > 502 || side2 > 1014) {
         alert("One or more of those sides is too long. Please enter a valid input.");
-   } else if (side1 < 3 || side 2 < 4) {
+   } else if (side1 < 3 || side2 < 4) {
         alert("One or more of those sides is too short. Please enter a valid input.");
    }
  }
@@ -227,10 +236,10 @@ let color = prompt("What color would you like for the rectangle?")
 function drawSmileyFace() {
   let canvas = document.getElementById("canvas5");
   let ctx = canvas.getContext('2d');
-  ctx.clearRect(0, 0, 1024, 256);
-
+  ctx.clearRect(0, 0, 1024, 512);
+  let radius;
   while (true) {
-    let radius = Number(prompt("Please enter the face's radius"));
+    radius = Number(prompt("Please enter the face's radius"));
     if (radius >= 10 && radius < 256) {
       break;
     } else if (radius < 10){
@@ -245,13 +254,13 @@ ctx.arc(512, 256, radius, 0, 2*Math.PI);
 ctx.stroke();
 ctx.closePath();
 
-ctx.beinPath();
-ctx.arc((512 - .1*radius), (256 - .1*radius), eyeRadius, 0, 2*Math.PI);
+ctx.beginPath();
+ctx.arc((512 - .2*radius), (256 - .1*radius), eyeRadius, 0, 2*Math.PI);
 ctx.stroke();
 ctx.closePath();
 
 ctx.beginPath();
-ctx.arc((512 + .1*radius), (256 - .1*radius), eyeRadius, 0, 2*Math.PI);
+ctx.arc((512 + .2*radius), (256 - .1*radius), eyeRadius, 0, 2*Math.PI);
 ctx.stroke();
 ctx.closePath();
 
@@ -285,24 +294,28 @@ function drawStar() {
   let canvas = document.getElementById("canvas6");
   let ctx = canvas.getContext('2d');
   ctx.clearRect(0, 0, 1024, 256);
- 
- let innerRadius = Number(prompt("Please enter an inner radius for your circle"));
- let outerRadius = Number(prompt("Please enter an outer radius for your circle"));
- 
- if (innerRadius > 125 || outerRadius > 125) {
+  let innerRadius;
+  let outerRadius;
+while(true) {
+ innerRadius = Number(prompt("Please enter an inner radius for your circle"));
+ outerRadius = Number(prompt("Please enter an outer radius for your circle"));
+if (outerRadius <= 125 && outerRadius >= 10) {
+  break;
+} else if (innerRadius > 125 || outerRadius > 125) {
   alert("One or both of your dimensions are too large.");
  } else if (innerRadius > outerRadius) {
   alert("The inner radius should not be greater than the outer.");
  } else if (innerRadius < 10 || outerRadius < 10) {
   alert("One or both of your dimensions are too small.");
  }
+}
  //Asks for and declares input variables
- 
+
  ctx.beginPath();
  ctx.moveTo(128, (128 - outerRadius));
  let rotation = 0;
  //Begins at center of canvas
- 
+
  for (i = 0; i <= 5; i++) {
   ctx.lineTo(125 + Math.round((Math.cos(rotation - (Math.PI/2))*outerRadius)), 125 + Math.round((Math.sin(rotation - (Math.PI/2))*outerRadius)));
   rotation += Math.PI*0.2;
@@ -337,12 +350,11 @@ function drawStopSign() {
   let ctx = canvas.getContext('2d');
   ctx.clearRect(0, 0, 1024, 256);
   let diagonal = Math.round(Math.sqrt(3200));
-  let xCoor;
-  let yCoor;
- //Assign values to these coordinates
+  let xCoor = 10 + diagonal;
+  let yCoor = 10;
 
   ctx.beginPath();
-  ctx.moveTo();
+  ctx.moveTo(xCoor, yCoor);
   ctx.lineTo((xCoor - diagonal), (yCoor + diagonal));
   ctx.lineTo((xCoor - diagonal), (yCoor + diagonal + 80));
   ctx.lineTo(xCoor, yCoor + 80 + 2*diagonal);
@@ -351,10 +363,13 @@ function drawStopSign() {
   ctx.lineTo((xCoor + diagonal + 80), (yCoor + diagonal));
   ctx.lineTo((xCoor + 80), yCoor);
   ctx.lineTo(xCoor, yCoor);
-  ctx.fillStyle = red;
+  ctx.fillStyle = "red";
   ctx.fill();
   ctx.moveTo(xCoor, yCoor);
-  ctx.strokeText("STOP", xCoor, yCoor);
+  ctx.font = "65px sans-serif";
+  ctx.fillStyle = "white";
+  ctx.textBaseline = "middle";
+  ctx.fillText("STOP", xCoor - diagonal + 8, yCoor + diagonal + 40);
   ctx.closePath();
 }
 
@@ -385,11 +400,11 @@ function drawPyramid() {
 
  while (true) {
   dimension = Number(prompt("Please input a dimension for the squares of the pyramid."));
-  if (dimension > 2 && dimension < 100) {
+  if (dimension >= 2 && dimension <= 100) {
    break;
  } else if (dimension < 2){
     alert("That dimension is too small. The pyramid won't be visible. Please use a larger value.");
-  } else if (dimension < 100) {
+  } else if (dimension > 100) {
     alert("That dimension is too large. The pyramid won't fit on the canvas. Please use a smaller value.");
   }
  }
@@ -437,17 +452,20 @@ function drawPyramid() {
  ctx.moveTo(xCoor, yCoor);
  ctx.strokeRectangle(xCoor, yCoor, dimension, dimension);
  */
+ let j;
+ let k = 4;
+
  for (j = 0; j<= 4; j++) {
-  let k = 4;
   for (i = 0; i <= k; i++) {
   ctx.moveTo(xCoor, yCoor);
-  ctx.strokeRectangle(xCoor, yCoor, dimension, dimension);
+  ctx.strokeRect(xCoor, yCoor, dimension, dimension);
   xCoor += dimension;
   }
-  xCoor = 10 + (((4 - k)/2)*dimension);
+  xCoor = 10 + (((5 - k)/2)*dimension);
   yCoor -= dimension;
   k--;
  }
+
 }
 
 /*
@@ -479,7 +497,7 @@ function drawPyramid() {
  * unsupported color.
  */
 
-function drawHouse() {
+/*function drawHouse() {
   let canvas = document.getElementById("canvas9");
   let ctx = canvas.getContext('2d');
   ctx.clearRect(0, 0, 1024, 760);
@@ -540,5 +558,5 @@ if ((houseColor == ("blue" || "brown" || "green" || "orange" || "purple" || "red
     alert("One or both of your colors hasn't been accepted. Please make sure it's a supported color, and that the first letter is lowercase.");
     //let loss = document.getElementById("output9");
     //loss.innerHTML = "|  ||" + "<br/>||  |_";
-    }
-}
+  }
+} */
