@@ -41,7 +41,10 @@ helloText.strokeText("Hello, World!", 10, 50);
  */
 
  function drawRectangle() {
- while (true) {
+ let canvas = document.getElementById("canvas2")
+ let ctx = canvas.getContext('2d');
+ ctx.clearRect(0, 0, 1024, 128)
+  while (true) {
  let height = prompt("Please enter a height for the rectangle.");
    if (height >= 1 && height < 512) {
      break;
@@ -77,9 +80,7 @@ helloText.strokeText("Hello, World!", 10, 50);
    }
  }
 
- let canvas = document.getElementById("canvas2")
- let ctx = canvas.getContext('2d');
- ctx.strokeRect(xCoor, yCoor, height, width);
+  ctx.strokeRect(xCoor, yCoor, height, width);
  }
 
 
@@ -111,6 +112,7 @@ helloText.strokeText("Hello, World!", 10, 50);
 function drawColoredRectangle() {
 let canvas = document.getElementById("canvas3;");
 let rectFormat = canvas.getContext('2d');
+rectFormat.clearRect(0, 0, 1024, 128);
 let color = prompt("What color would you like for the rectangle?")
   switch(color) {
     case "black":
@@ -172,6 +174,7 @@ let color = prompt("What color would you like for the rectangle?")
  function drawTriangle() {
  let canvas = document.getElementById("canvas4");
  let ctx = canvas.getContext('2d');
+ ctx.clearRect(0, 0, 1024, 512);
 
  while (true) {
   let side1 = Number(prompt("Enter the dimension for side 1. It should be the shortest."));
@@ -214,6 +217,7 @@ let color = prompt("What color would you like for the rectangle?")
 function drawSmileyFace() {
   let canvas = document.getElementById("canvas5");
   let ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, 1024, 256);
 
   while (true) {
     let radius = Number(prompt("Please enter the face's radius"));
@@ -268,6 +272,7 @@ ctx.closePath();
 function drawStar() {
   let canvas = document.getElementById("canvas6");
   let ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, 1024, 256);
  
  let innerRadius = Number(prompt("Please enter an inner radius for your circle"));
  let outerRadius = Number(prompt("Please enter an outer radius for your circle"));
@@ -311,6 +316,7 @@ function drawStar() {
 function drawStopSign() {
   let canvas = document.getElementById("canvas7");
   let ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, 1024, 256);
   let diagonal = Math.round(Math.sqrt(3200));
   let xCoor;
   let yCoor;
@@ -356,6 +362,7 @@ function drawPyramid() {
   let ctx = canvas.getContext('2d');
   let dimension;
   let i = 0;
+  ctx.clearRect(0, 0, 1024, 512);
 
  while (true) {
   dimension = Number(prompt("Please input a dimension for the squares of the pyramid."));
@@ -456,7 +463,7 @@ function drawPyramid() {
 function drawHouse() {
   let canvas = document.getElementById("canvas9");
   let ctx = canvas.getContext('2d');
-
+  ctx.clearRect(0, 0, 1024, 760);
  let doorColor;
  let houseColor;
 
