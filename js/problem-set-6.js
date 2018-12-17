@@ -529,30 +529,30 @@ if (((houseColor == "blue") || (houseColor == "brown") || (houseColor == "green"
 
  ctx.beginPath();
  ctx.fillStyle = "#add8e6";
- ctx.fillRect(300, 410, 20, 20);
+ ctx.fillRect(300, 410, 60, 60);
  ctx.closePath();
 
 
  ctx.beginPath();
  ctx.fillStyle = "#add8e6";
- ctx.fillRect(724, 410, 20, 20);
+ ctx.fillRect(724, 410, 60, 60);
  ctx.closePath();
 
 
  ctx.beginPath();
  ctx.fillStyle = "#add8e6";
- ctx.fillRect(300, 630, 20, 20);
+ ctx.fillRect(300, 630, 60, 60);
  ctx.closePath();
 
 
  ctx.beginPath();
  ctx.fillStyle = "#add8e6";
- ctx.fillRect(724, 630, 20, 20);
+ ctx.fillRect(724, 630, 60, 60);
  ctx.closePath();
 
  ctx.beginPath();
  ctx.fillStyle = doorColor;
- ctx.fillRect(500, 630, 24, 120);
+ ctx.fillRect(500, 630, 40, 120);
  ctx.closePath();
 
   } else {
