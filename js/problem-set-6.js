@@ -508,8 +508,7 @@ function drawHouse() {
  doorColor = prompt("Please give a color for the door of the house. Make sure the first letter is lowercase.");
  houseColor = prompt("Please give a color for the walls of the house. Make sure the first letter is lowercase.");
 
-//if ((houseColor == ("blue" || "brown" || "green" || "orange" || "purple" || "red" || "yellow")) && (doorColor == ("blue" || "brown" || "green" || "orange" || "purple" || "red" || "yellow")) {
-if (doorColor == "blue") {
+if (((houseColor == "blue") || (houseColor == "brown") || (houseColor == "green") || (houseColor == "orange") || (houseColor == "purple") || (houseColor == "red") || (houseColor == "yellow")) &&((doorColor == "blue") || (doorColor == "brown") || (doorColor == "green") || (doorColor == "orange") || (doorColor == "purple") || (doorColor == "red") || (doorColor == "yellow"))) {
  ctx.beginPath();
  ctx.moveTo(512, 310);
  ctx.lineTo(150, 310);
