@@ -50,7 +50,7 @@ helloText.strokeText("Hello, World!", 10, 50);
  let yCoor;
 
 while (true) {
- height = prompt("Please enter a height for the rectangle.");
+ height = Number(prompt("Please enter a height for the rectangle."));
    if (height >= 1 && height < 512) {
      break;
    } else if (height < 1){
@@ -61,7 +61,7 @@ while (true) {
  }
 
  while (true) {
- width = prompt("Please enter a width for the rectangle.");
+ width = Number(prompt("Please enter a width for the rectangle."));
    if (width >= 1 && width < 1024) {
      break;
    } else if (width < 1){
@@ -72,7 +72,7 @@ while (true) {
  }
 
  while (true) {
- xCoor = prompt("Please enter the x coordinate for the top left point of the rectangle.");
+ xCoor = Number(prompt("Please enter the x coordinate for the top left point of the rectangle."));
    if (xCoor >= 5 && (xCoor + width <= 1024)) {
      break;
    } else {
@@ -81,7 +81,7 @@ while (true) {
  }
 
  while (true) {
- yCoor = prompt("Please enter the y coordinate for the top left points of the rectangle.");
+ yCoor = Number(prompt("Please enter the y coordinate for the top left points of the rectangle."));
    if (yCoor >= 5 && (yCoor + height <= 512)) {
      break;
    } else {
@@ -183,11 +183,11 @@ let color = prompt("What color would you like for the rectangle?")
  function drawTriangle() {
  let canvas = document.getElementById("canvas4");
  let ctx = canvas.getContext('2d');
- ctx.clearRect(0, 0, (canvas.width), (canvas.width));
 
  let side1;
  let side2;
  let side3;
+ ctx.clearRect(0, 0, 1024, 512);
 
  while (true) {
   side1 = Number(prompt("Enter the dimension for side 1. It should be the shortest."));
@@ -205,12 +205,13 @@ let color = prompt("What color would you like for the rectangle?")
         alert("One or more of those sides is too short. Please enter a valid input.");
    }
  }
-
+  ctx.beginPath();
    ctx.moveTo(10, 10);
    ctx.lineTo(10, (10 + side1));
    ctx.lineTo((10 + side2), (10 + side1));
    ctx.lineTo(10, 10);
    ctx.stroke();
+   ctx.closePath();
  }
 
 
@@ -497,7 +498,7 @@ function drawPyramid() {
  * unsupported color.
  */
 
-/*function drawHouse() {
+function drawHouse() {
   let canvas = document.getElementById("canvas9");
   let ctx = canvas.getContext('2d');
   ctx.clearRect(0, 0, 1024, 760);
@@ -507,14 +508,15 @@ function drawPyramid() {
  doorColor = prompt("Please give a color for the door of the house. Make sure the first letter is lowercase.");
  houseColor = prompt("Please give a color for the walls of the house. Make sure the first letter is lowercase.");
 
-if ((houseColor == ("blue" || "brown" || "green" || "orange" || "purple" || "red" || "yellow")) && (doorColor == ("blue" || "brown" || "green" || "orange" || "purple" || "red" || "yellow")) {
+//if ((houseColor == ("blue" || "brown" || "green" || "orange" || "purple" || "red" || "yellow")) && (doorColor == ("blue" || "brown" || "green" || "orange" || "purple" || "red" || "yellow")) {
+if (doorColor == "blue") {
  ctx.beginPath();
  ctx.moveTo(512, 310);
  ctx.lineTo(150, 310);
  ctx.lineTo(512, 10);
  ctx.lineTo(874, 310);
  ctx.lineTo(512, 310);
- ctx.fillStyle = gray;
+ ctx.fillStyle = "gray";
  ctx.fill();
  ctx.closePath();
 
@@ -522,30 +524,30 @@ if ((houseColor == ("blue" || "brown" || "green" || "orange" || "purple" || "red
  ctx.beginPath();
  ctx.moveTo(200, 310);
  ctx.fillStyle = houseColor;
- ctx.fillRect(200, 310, 440, 624);
+ ctx.fillRect(200, 310, 624, 440);
  ctx.closePath();
 
 
  ctx.beginPath();
- ctx.fillStyle = #add8e6;
+ ctx.fillStyle = "#add8e6";
  ctx.fillRect(300, 410, 20, 20);
  ctx.closePath();
 
 
  ctx.beginPath();
- ctx.fillStyle = #add8e6;
+ ctx.fillStyle = "#add8e6";
  ctx.fillRect(724, 410, 20, 20);
  ctx.closePath();
 
 
  ctx.beginPath();
- ctx.fillStyle = #add8e6;
+ ctx.fillStyle = "#add8e6";
  ctx.fillRect(300, 630, 20, 20);
  ctx.closePath();
 
 
  ctx.beginPath();
- ctx.fillStyle = #add8e6;
+ ctx.fillStyle = "#add8e6";
  ctx.fillRect(724, 630, 20, 20);
  ctx.closePath();
 
@@ -559,4 +561,4 @@ if ((houseColor == ("blue" || "brown" || "green" || "orange" || "purple" || "red
     //let loss = document.getElementById("output9");
     //loss.innerHTML = "|  ||" + "<br/>||  |_";
   }
-} */
+}
